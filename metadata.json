@@ -1,0 +1,6 @@
+{
+  "name": "KUROGANE",
+  "description": "An anime-inspired dark fantasy AI intelligence forged around an awakened black blade, with precision model controls and token analytics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

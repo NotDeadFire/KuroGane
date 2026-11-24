@@ -1,0 +1,293 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Cinzel", Georgia, serif;
+  --font-sans: "Manrope", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --color-obsidian: #050505;
+  --color-void: #0B0B0E;
+  --color-forge: #111115;
+  --color-silver: #C9C9D1;
+  --color-crimson: #A40019;
+  --color-ember: #FF263F;
+  --color-ash: #777780;
+}
+
+:root {
+  color-scheme: dark;
+  --bg-primary: #050505;
+  --bg-secondary: #0B0B0E;
+  --bg-card: #111115;
+  --text-primary: #C9C9D1;
+  --text-muted: #777780;
+  --accent-crimson: #A40019;
+  --accent-glow: #FF263F;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  background-color: #050505;
+  color: #C9C9D1;
+  font-family: "Manrope", system-ui, -apple-system, sans-serif;
+}
+
+.font-display {
+  font-family: "Cinzel", Georgia, serif;
+}
+
+.font-mono-tabular {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom slim obsidian scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #23232b;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #A40019;
+}
+
+/* Metallic text shimmer for forged KUROGANE title */
+.kurogane-forged-text {
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #d8d8e2 48%,
+    #888894 75%,
+    #f0f0f6 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 18px rgba(255, 38, 63, 0.35));
+}
+
+/* Subtle metallic edge glow */
+.blade-border-glow {
+  border: 1px solid rgba(201, 201, 209, 0.12);
+  transition: border-color 180ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.blade-border-glow:hover,
+.blade-border-glow:focus-within {
+  border-color: rgba(255, 38, 63, 0.45);
+  box-shadow: 0 0 20px -6px rgba(164, 0, 25, 0.45);
+}
+
+/* Grimoire slow rune rotation */
+@keyframes grimoireSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes grimoireSpinReverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-grimoire-slow {
+  animation: grimoireSpin 42s linear infinite;
+}
+
+.animate-grimoire-reverse {
+  animation: grimoireSpinReverse 28s linear infinite;
+}
+
+@keyframes kuroSlashCross {
+  0% {
+    clip-path: inset(0 0 0 100%);
+    opacity: 0.9;
+    filter: brightness(1.6);
+  }
+  28% {
+    clip-path: inset(0 0 0 0%);
+    opacity: 1;
+    filter: brightness(2.1);
+  }
+  70% {
+    clip-path: inset(0 0 0 0%);
+    opacity: 0.95;
+    filter: brightness(1.3);
+  }
+  100% {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0;
+    filter: brightness(1);
+  }
+}
+
+@keyframes kuroSlashScar {
+  0% {
+    transform: translate(-50%, -50%) rotate(-31deg) scaleX(0);
+    opacity: 0;
+  }
+  18% {
+    transform: translate(-50%, -50%) rotate(-31deg) scaleX(1);
+    opacity: 1;
+  }
+  65% {
+    transform: translate(-50%, -50%) rotate(-31deg) scaleX(1.06);
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(-31deg) scaleX(1.12);
+    opacity: 0;
+  }
+}
+
+@keyframes kuroSlashFlash {
+  0% {
+    opacity: 0;
+  }
+  16% {
+    opacity: 0.42;
+  }
+  45% {
+    opacity: 0.22;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-kuro-slash-cross {
+  animation: kuroSlashCross 0.85s cubic-bezier(0.12, 0.9, 0.2, 1) forwards;
+}
+
+.animate-kuro-slash-scar {
+  animation: kuroSlashScar 1.05s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-kuro-slash-flash {
+  animation: kuroSlashFlash 0.72s ease-out forwards;
+}
+
+@keyframes kuroSlashFireRibbon {
+  0% {
+    clip-path: inset(0 0 0 100%);
+    opacity: 0.95;
+  }
+  26% {
+    clip-path: inset(0 0 0 0%);
+    opacity: 1;
+  }
+  75% {
+    clip-path: inset(0 0 0 0%);
+    opacity: 0.75;
+  }
+  100% {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0;
+  }
+}
+
+@keyframes kuroSlashSpark {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(var(--spark-x, 80px), var(--spark-y, -110px)) scale(0.15);
+    opacity: 0;
+  }
+}
+
+@keyframes kuroBladeThinkPulse {
+  0%, 100% {
+    box-shadow: 0 0 10px 2px rgba(255, 38, 63, 0.85), 0 0 20px 4px rgba(255, 92, 26, 0.45);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 16px 4px rgba(255, 38, 63, 1), 0 0 28px 6px rgba(255, 110, 32, 0.65);
+    transform: scale(1.16);
+  }
+}
+
+.animate-kuro-slash-fire {
+  animation: kuroSlashFireRibbon 0.96s cubic-bezier(0.14, 0.88, 0.24, 1) forwards;
+}
+
+.animate-kuro-slash-spark {
+  animation: kuroSlashSpark 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-blade-thinking {
+  animation: kuroBladeThinkPulse 1.35s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-grimoire-slow,
+  .animate-grimoire-reverse,
+  .animate-kuro-slash-cross,
+  .animate-kuro-slash-scar,
+  .animate-kuro-slash-flash,
+  .animate-kuro-slash-fire,
+  .animate-kuro-slash-spark,
+  .animate-blade-thinking {
+    animation: none !important;
+  }
+}
+
+/* KaTeX dark mode overrides */
+.katex {
+  color: #e4e4ec;
+  font-size: 1.05em;
+}
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.75rem 0;
+}
+
+/* Highlight.js dark obsidian adjustments */
+.hljs {
+  background: transparent !important;
+  color: #d6d6df;
+}
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal {
+  color: #ff5c72;
+}
+.hljs-string,
+.hljs-attr {
+  color: #b8e994;
+}
+.hljs-title,
+.hljs-function {
+  color: #82ccdd;
+}
+.hljs-number,
+.hljs-built_in {
+  color: #f8c291;
+}
+.hljs-comment {
+  color: #6c6c78;
+  font-style: italic;
+}
